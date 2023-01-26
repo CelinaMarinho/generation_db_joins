@@ -18,6 +18,17 @@ INSERT INTO tb_classes(nome) VALUES("Assassino");
 
 INSERT INTO tb_classes(nome) VALUES("Feiticeiro");
 
+ALTER TABLE tb_classes ADD descricao VARCHAR (150);
+
+SELECT * FROM tb_classes;
+
+UPDATE tb_classes SET descricao = "classe com baixa resistência e alto dano" WHERE id=1;
+UPDATE tb_classes SET descricao = "classe com alta resistência" WHERE id=2;
+UPDATE tb_classes SET descricao = "classe com baixa resistência e altíssimo dano" WHERE id=3;
+UPDATE tb_classes SET descricao = "classe com baixa resistência, furtividade" WHERE id=4;
+UPDATE tb_classes SET descricao = "classe com alta resistência, baixo dano, uso de magia" WHERE id=5;
+
+
 CREATE TABLE tb_personagens( 
 id bigint AUTO_INCREMENT,
 nome VARCHAR(150),
@@ -45,7 +56,6 @@ INSERT INTO tb_personagens(nome, poder_ataque, poder_defesa, agilidade) VALUES("
 
 INSERT INTO tb_personagens(nome, poder_ataque, poder_defesa, agilidade) VALUES("Moon", 2100, 1800, 620);
 
-SELECT * FROM tb_classes;
 SELECT * FROM tb_personagens;
 
 UPDATE tb_personagens SET classes_id = 5  WHERE id=1;
@@ -71,6 +81,10 @@ SELECT * FROM tb_personagens;
 
 SELECT * FROM tb_personagens INNER JOIN tb_classes
 ON tb_personagens.classes_id = tb_classes.id;
+
+SELECT * FROM tb_personagens INNER JOIN tb_classes
+ON tb_personagens.classes_id = tb_classes.id
+WHERE tb_classes.nome = "Mago";
 
 
 
